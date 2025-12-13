@@ -1,0 +1,42 @@
+{
+	"name": "dataflow_window",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "store_sales",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "window1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Sale_ID as short,",
+				"          Date as date,",
+				"          Region as string,",
+				"          City as string,",
+				"          Category as string,",
+				"          Item as string,",
+				"          Quantity as short,",
+				"          Price as double,",
+				"          Total_Amount as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 window(over(Region),",
+				"     desc(Total_Amount, true),",
+				"     window_rank = rank()) ~> window1"
+			]
+		}
+	}
+}
