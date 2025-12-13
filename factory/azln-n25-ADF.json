@@ -1,0 +1,9 @@
+{
+	"name": "azln-n25-ADF",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "746b36d3-99d3-417c-966a-39b8afdfcabe",
+		"tenantId": "e819c36d-2776-471d-a3d6-d72cfaa54136"
+	}
+}

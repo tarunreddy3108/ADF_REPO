@@ -1,0 +1,17 @@
+{
+	"name": "AZLN_Snowflake",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZLN_SnowflakeConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "AzureLearning",
+			"table": "Customers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

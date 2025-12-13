@@ -1,0 +1,42 @@
+{
+	"name": "AZLN_Sql_DynamicDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZLN_N25_Dynamic_database",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Database_name": {
+					"value": "@dataset().Database_name",
+					"type": "Expression"
+				},
+				"User_Name": {
+					"value": "@dataset().User_Name",
+					"type": "Expression"
+				},
+				"Password": {
+					"value": "@dataset().Password",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"Database_name": {
+				"type": "string"
+			},
+			"User_Name": {
+				"type": "string"
+			},
+			"Password": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "customers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

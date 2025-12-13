@@ -1,0 +1,17 @@
+{
+	"name": "AZLN_Sql_DB1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZLN_N25_database1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "employee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

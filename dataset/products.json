@@ -1,0 +1,19 @@
+{
+	"name": "products",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZLN_N25_File_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "output-files"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

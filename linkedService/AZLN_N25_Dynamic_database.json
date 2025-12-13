@@ -1,0 +1,28 @@
+{
+	"name": "AZLN_N25_Dynamic_database",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"Database_name": {
+				"type": "string"
+			},
+			"User_Name": {
+				"type": "string"
+			},
+			"Password": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "azln-n25-db.database.windows.net",
+			"database": "@{linkedService().Database_name}",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "@{linkedService().User_Name}",
+			"password": "@{linkedService().Password}"
+		}
+	}
+}
