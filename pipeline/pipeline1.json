@@ -30,8 +30,37 @@
 						"type": "DelimitedTextReadSettings"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "File_count",
+					"value": {
+						"value": "@length(activity('Get Metadata1').output.childItems)",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"File_count": {
+				"type": "Integer"
+			}
+		},
 		"annotations": []
 	}
 }
