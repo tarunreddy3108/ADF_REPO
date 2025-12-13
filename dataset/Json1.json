@@ -1,0 +1,52 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZLN_N25_File_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "output-files"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"customer_id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				},
+				"address": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"state": {
+					"type": "string"
+				},
+				"postal_code": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"created_at": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
