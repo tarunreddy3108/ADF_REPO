@@ -1,0 +1,41 @@
+{
+	"name": "dataflow_rank",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "store_sales",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "rank1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Sale_ID as short,",
+				"          Date as date,",
+				"          Region as string,",
+				"          City as string,",
+				"          Category as string,",
+				"          Item as string,",
+				"          Quantity as short,",
+				"          Price as double,",
+				"          Total_Amount as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 rank(desc(Total_Amount, true),",
+				"     output(rank_1 as long)) ~> rank1"
+			]
+		}
+	}
+}
