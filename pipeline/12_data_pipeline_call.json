@@ -60,7 +60,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "7_Filter",
+									"referenceName": "7_Filter_StoredProcedure",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
