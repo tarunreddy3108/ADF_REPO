@@ -1,0 +1,11 @@
+{
+	"name": "AZLN_N25_File_Storage",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://azlnn25storageacct.dfs.core.windows.net/"
+		}
+	}
+}

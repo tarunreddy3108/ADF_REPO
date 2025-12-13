@@ -1,0 +1,99 @@
+{
+	"name": "dataflow1_Practice",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "store_sales",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "store_sales",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "sort1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "union1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Sale_ID as string,",
+				"          Date as string,",
+				"          Region as string,",
+				"          City as string,",
+				"          Category as string,",
+				"          Item as string,",
+				"          Quantity as string,",
+				"          Price as string,",
+				"          Total_Amount as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 filter(or(equals(Region,'North'),equals(Region,'East'))) ~> filter1",
+				"filter1 sort(desc(Price, false)) ~> sort1",
+				"sort1 select(mapColumn(",
+				"          Sale_ID,",
+				"          Date,",
+				"          City,",
+				"          Category,",
+				"          Item,",
+				"          Quantity,",
+				"          Price,",
+				"          Total_Amount",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Sale_ID = concat(Sale_ID,'_HSP')) ~> derivedColumn1",
+				"derivedColumn1 split(equals(Category, 'Stationery'),",
+				"     equals(Category,'Furniture'),",
+				"     disjoint: false) ~> split1@(stationary, Furniture, Electronics)",
+				"split1@stationary, split1@Furniture, split1@Electronics union(byName: true)~> union1",
+				"union1 sink(allowSchemaDrift: false,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Sale_ID as string,",
+				"          Date as string,",
+				"          Region as string,",
+				"          City as string,",
+				"          Category as string,",
+				"          Item as string,",
+				"          Quantity as string,",
+				"          Price as string,",
+				"          Total_Amount as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
