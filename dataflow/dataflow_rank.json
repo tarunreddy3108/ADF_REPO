@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "store_sales",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -41,6 +45,20 @@
 				"     output(rank_1 as long)) ~> rank1",
 				"rank1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Sale_ID as string,",
+				"          Date as string,",
+				"          Region as string,",
+				"          City as string,",
+				"          Category as string,",
+				"          Item as string,",
+				"          Quantity as string,",
+				"          Price as string,",
+				"          Total_Amount as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
