@@ -3,10 +3,37 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Project_Source_Load",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DB_Name": {
+					"value": "@dataset().DB_Name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"DB_Name": {
+				"type": "string"
+			},
+			"schema": {
+				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
 	}
 }
