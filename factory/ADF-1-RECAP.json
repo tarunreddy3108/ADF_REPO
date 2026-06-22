@@ -1,0 +1,15 @@
+{
+	"name": "ADF-1-RECAP",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "972ba8e0-0477-4ec5-b5fb-d949901c44c3",
+		"tenantId": "3c151375-c321-4206-bdda-a61d32c1c2dd"
+	}
+}
